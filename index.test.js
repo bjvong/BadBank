@@ -2,15 +2,6 @@ const { MongoClient } = require("mongodb");
 const uri = 'mongodb://127.0.0.1:27017';
 
 describe("Client", () => {
-  beforeAll(async () => {
-    const client = new MongoClient(uri);
-        await client.connect();
-  });
-
-  afterAll(async () => {
-    const client = new MongoClient(uri);
-    await client.close();
-  });
 
 it('should insert a doc into collection', async() =>{
     const client = new MongoClient(uri);
