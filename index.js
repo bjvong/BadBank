@@ -15,6 +15,7 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
 });
 
 
+
 app.get('/account/all', function (req, res){
     dal.all().
         then((results) => {
