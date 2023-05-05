@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const uri = 'mongodb://mongodb+srv://bjvong:secret123@bad-bank-bjv.iyiafcn.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://bjvong:secret123@bad-bank-bjv.iyiafcn.mongodb.net/?retryWrites=true&w=majority';
 
 
 
