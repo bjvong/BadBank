@@ -23,6 +23,6 @@ app.get('/account/all', function (req, res){
         });
 });
 
-var port = 8080;
-app.listen(port);
+var port = process.env.PORT;
+app.listen(port || 5000);
 console.log('Running on port:' + port);
