@@ -89,7 +89,7 @@ function CreateAccount(){
             {/* </form> */}
             <form className="text-center" action="/auth/google" method="get">
             <button className="btn btn-primary btn-block my-2" type="submit">
-            Sign in with Google
+            Sign-in with Google
             </button>
             </form>
 
