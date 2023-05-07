@@ -8,8 +8,6 @@ const addGoogleUser =
       lastName,
       balance: 100,
       profilePhoto,
-      accessToken,
-      refreshToken,
       source: "google",
     });
     return user.save();

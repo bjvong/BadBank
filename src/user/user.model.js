@@ -16,8 +16,6 @@ const userSchema = new Schema({
   balance: Number,
   profilePhoto: String,
   password: String,
-  accessToken: String,
-  refreshToken: String,
   source: {
     type: String,
     required: [true, "source not specified"],

@@ -28,8 +28,6 @@ async (accessToken, refreshToken, profile, done) => {
       firstName,
       lastName,
       profilePhoto,
-      accessToken,
-      refreshToken,
       source
     });
     return done(null, newUser);

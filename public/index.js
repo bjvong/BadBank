@@ -1,4 +1,10 @@
 function Spa(){
+    const url = '/currentUser';
+    ( async ()=>{
+       var res = await fetch(url);
+       var data = await res.json();
+       console.log(data);
+    })();
         
     return(
         <HashRouter>
