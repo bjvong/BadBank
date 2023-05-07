@@ -6,6 +6,7 @@ function CreateAccount(loggedIn){
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [buttonMode, setButtonMode] = React.useState(true);
+    var handleToUpdate = this.props.handleToUpdate;
  
     function validate(field, label){
         if (!field){
@@ -43,6 +44,7 @@ function CreateAccount(loggedIn){
         console.log(loggedIn);
         loggedIn=true;
         console.log(loggedIn);
+        handleToUpdate(loggedIn);
      }
     
     function clearForm(){
