@@ -48,6 +48,7 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 };
 
+
 app.get(
     "/auth/google",
     passport.authenticate("google", {
@@ -74,7 +75,7 @@ app.get("/auth/logout", (req, res) => {
     req.flash("success", "Successfully logged out");
     req.session.destroy(function () {
     res.clearCookie("connect.sid");
-    res.redirect("/");
+    res.redirect("/login");
     });
   });
 
