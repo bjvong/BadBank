@@ -90,7 +90,7 @@ app.get("/auth/logout", (req, res) => {
 //   });
 
  app.get("/profile", isLoggedIn, (req, res) => {
-     JSONstringify(req.user);
+     console.log(req.user);
    });
 
 app.get('/auth/local/signup/:firstName/:lastName/:email/:password', function (req, res) {   
