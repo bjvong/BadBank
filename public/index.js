@@ -5,7 +5,7 @@ function Spa(){
        var data = await res.json();
        console.log(data);
     })();
-        
+        console.log('if it works:', data.id, + ' ' + data.email);
     return(
         <HashRouter>
             <NavBar/>
