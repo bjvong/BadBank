@@ -12,13 +12,13 @@ function Spa(){
             })
             .then((resJson) =>{
                 setLoggedIn(true);
-                // console.log(loggedIn);
-                // console.log(resJson);
+                //console.log(loggedIn);
+                //console.log(resJson);
             })
             .catch((error) => {
                 setLoggedIn(false);
-                // console.log(loggedIn);
-                // console.log(error)
+                //console.log(loggedIn);
+                //console.log(error)
             });
 
          })();
