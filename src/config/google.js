@@ -15,6 +15,8 @@ async (accessToken, refreshToken, profile, done) => {
   const firstName = profile.name.givenName;
   const lastName = profile.name.familyName;
   const profilePhoto = profile.photos[0].value;
+  const accessToken = profile.accessToken.value;
+  const refreshToken = profile.refreshToken.value;
   const source = "google";
 
   const currentUser = await UserService.getUserByEmail({
@@ -28,6 +30,9 @@ async (accessToken, refreshToken, profile, done) => {
       firstName,
       lastName,
       profilePhoto,
+      accessToken,
+      refreshToken,
+      source
     });
     return done(null, newUser);
   }

@@ -68,8 +68,8 @@ app.get(
 app.get("/auth/logout", (req, res) => {
     req.flash("success", "Successfully logged out");
     req.session.destroy(function () {
-      res.clearCookie("connect.sid");
-      res.redirect("/");
+    res.clearCookie("connect.sid");
+    res.redirect("/");
     });
   });
 
@@ -89,7 +89,7 @@ app.get("/auth/logout", (req, res) => {
 //     res.render("local/signin.ejs");
 //   });
 
- app.get("/", isLoggedIn, (req, res) => {
+ app.get("/profile", isLoggedIn, (req, res) => {
      console.log(req.user);
      res.redirect("/");
    });

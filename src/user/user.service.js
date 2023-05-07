@@ -1,6 +1,6 @@
 const addGoogleUser =
   (User) =>
-  ({ id, email, firstName, lastName, profilePhoto }) => {
+  ({ id, email, firstName, lastName, profilePhoto, accessToken, refreshToken }) => {
     const user = new User({
       id,
       email,
@@ -8,6 +8,8 @@ const addGoogleUser =
       lastName,
       balance: 100,
       profilePhoto,
+      accessToken,
+      refreshToken,
       source: "google",
     });
     return user.save();
