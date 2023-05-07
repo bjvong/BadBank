@@ -33,13 +33,16 @@ function CreateAccount(loggedIn){
             var res = await fetch(url);
             var data = await res.json();
             console.log(data);
-            console.log(loggedIn);
-            loggedIn = true;
-            console.log(loggedIn);
+
 
          })();
          setStatus('Account Created Successfully');
          setShow(false);
+     }
+     function setGoogle(){
+        console.log(loggedIn);
+        loggedIn=true;
+        console.log(loggedIn);
      }
     
     function clearForm(){
@@ -91,7 +94,7 @@ function CreateAccount(loggedIn){
             <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
             {/* </form> */}
             <form className="text-center" action="/auth/google" method="get">
-            <button className="btn btn-primary btn-block my-2" type="submit">
+            <button onClick={setGoogle} className="btn btn-primary btn-block my-2" type="submit">
             Sign-in with Google
             </button>
             </form>
