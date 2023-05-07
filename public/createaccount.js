@@ -44,10 +44,8 @@ function CreateAccount({loggedIn, onGoogleLogin}){
 
      function onGoogleLogin(){
         const url = '/auth/google';
-         ( async ()=>{
-            var res = await fetch(url);
-            var data = await res.json();
-            console.log(data);
+         ( async (req, res)=>{
+            res.redirect(url);
             })();
 
      }
