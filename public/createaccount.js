@@ -33,7 +33,9 @@ function CreateAccount(loggedIn){
             var res = await fetch(url);
             var data = await res.json();
             console.log(data);
+            console.log(loggedIn);
             loggedIn = true;
+            console.log(loggedIn);
 
          })();
          setStatus('Account Created Successfully');
@@ -75,17 +77,17 @@ function CreateAccount(loggedIn){
             <>
             {/* <form className="auth-container text-center"action="/auth/local/signup"method="post"> */}
             First Name<br/>
-            <input name="first_name" type="text" aria-label="First name" className="form-control" id="firstName" placeholder="Enter First name" value={firstName} 
-            onChange={(e) => handleChange(e,'firstName')} required/><br/>
+            <input name="first_name" type="input" aria-label="First name" className="form-control" id="firstName" placeholder="Enter First name" value={firstName} 
+            onChange={(e) => handleChange(e,'firstName')}/><br/>
             Last Name<br/>
-            <input name="last_name" type="text" aria-label="Last name" className="form-control" id="lastName" placeholder="Enter Last name" value={lastName} 
-            onChange={(e) => handleChange(e,'lastName')} required/><br/>
+            <input name="last_name" type="input" aria-label="Last name" className="form-control" id="lastName" placeholder="Enter Last name" value={lastName} 
+            onChange={(e) => handleChange(e,'lastName')}/><br/>
             Email Address<br/>
             <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" value={email} 
-            onChange={(e) => handleChange(e,'email')} required/><br/>
+            onChange={(e) => handleChange(e,'email')}/><br/>
             Password<br/>
             <input type="password" className="form-control" id="password" name="password" placeholder="Enter password" value={password} 
-            onChange={(e) => handleChange(e,'password')} required/><br/>
+            onChange={(e) => handleChange(e,'password')}/><br/>
             <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
             {/* </form> */}
             <form className="text-center" action="/auth/google" method="get">
