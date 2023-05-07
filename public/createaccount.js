@@ -1,4 +1,4 @@
-function CreateAccount(loggedIn){
+function CreateAccount({loggedIn, onGoogleLogin}){
     const [show, setShow] = React.useState(true);
     const [status, setStatus] = React.useState('');
     const [firstName, setFirstName] = React.useState('');
@@ -6,7 +6,8 @@ function CreateAccount(loggedIn){
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [buttonMode, setButtonMode] = React.useState(true);
-    var handleToUpdate = this.props.handleToUpdate;
+    // const [loggedIn, setLoggedIn] = React.useState(loggedIn);
+
  
     function validate(field, label){
         if (!field){
@@ -39,12 +40,6 @@ function CreateAccount(loggedIn){
          })();
          setStatus('Account Created Successfully');
          setShow(false);
-     }
-     function setGoogle(){
-        console.log(loggedIn);
-        loggedIn=true;
-        console.log(loggedIn);
-        handleToUpdate(loggedIn);
      }
     
     function clearForm(){
@@ -96,7 +91,7 @@ function CreateAccount(loggedIn){
             <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
             {/* </form> */}
             <form className="text-center" action="/auth/google" method="get">
-            <button onClick={setGoogle} className="btn btn-primary btn-block my-2" type="submit">
+            <button onClick={() => onGoogleLogin()} className="btn btn-primary btn-block my-2" type="submit">
             Sign-in with Google
             </button>
             </form>
