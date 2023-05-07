@@ -10,6 +10,7 @@ function NavBar(){
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div className="navbar-nav">
         <a className="nav-link" data-toggle="tooltip" title="Create an new account Here!" href="#/CreateAccount/">Create Account</a>
+        <a className="nav-link" data-toggle="tooltip" title="Login to your Bad Bank" href="#/login/">Log in</a>
         <a className="nav-link" data-toggle="tooltip" title="Make a deposit to your account!" href="#/deposit/">Deposit</a>
         <a className="nav-link" data-toggle="tooltip" title="Make a withdraw from your account!" href="#/withdraw/">Withdraw</a>
         <a className="nav-link" data-toggle="tooltip" title="View all data" href="#/alldata/">AllData</a>

@@ -1,30 +1,43 @@
-const { MongoClient } = require("mongodb");
-const uri = 'mongodb+srv://bjvong:secret123@bad-bank-bjv.iyiafcn.mongodb.net/?retryWrites=true&w=majority';
+require("dotenv").config();
+const mongoose = require("mongoose");
+const request = require("supertest");
+const UserService = require("./src/user");
 
-describe("insert", () => {
-let connection;
-let db;
 
-beforeAll(async () => {
-    connection = await MongoClient.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    db = connection.db('myProject');
-  });
-
-  afterAll(async () => {
-    await connection.close();
-  });
-
-it('should insert a doc into collection', async() =>{
-    const someUserId = Math.floor(Math.random() * 1000000);
-    var users = db.collection('users');
-    const mockUser = {_id: someUserId, name: 'John'};
-    await users.insertOne(mockUser);
-    const insertedUser = await users.findOne({_id: someUserId});
-    expect(insertedUser).toEqual(mockUser);
-    });
-
+beforeEach(async () => {
+  await mongoose.connect(process.env.MONGO_URI);
 });
+
+
+afterAll(async () => {
+  await mongoose.connection.close();
+});
+
+describe("GET /account/all", () => {
+  it("should return all users", async () => {
+  const res = await UserService.getUsers();
+  expect(res.body.length).toBeGreaterThan(0);
+    });
+  });
+
+// it('should insert a doc into collection', async() =>{
+//     someUserId = Math.floor(Math.random() * 1000000);
+//     var users = db.collection('users');
+//     const mockUser = {_id: someUserId, name: 'John'};
+//     await users.insertOne(mockUser);
+//     const insertedUser = await users.findOne({_id: someUserId});
+//     expect(insertedUser).toEqual(mockUser);
+//     });
+
+// it('should delete the doc it just inserted', async() =>{
+//     var users = db.collection('users');
+//     const deleteUser = {_id: someUserId, name: 'John'};
+//     await users.findOneAndRemove(deleteUser);
+//     const deletedUser = await users.findOne({_id: someUserId});
+//     expect(!deletedUser);
+
+
+// });
+
+// });
 
