@@ -4,9 +4,9 @@ function Spa(){
        var res = await fetch(url);
        var data = await res.json();
        console.log(data);
-       console.log('if it works:', data.id, + ' ' + data.email);
     })();
         
+    if(data.email){
     return(
         <HashRouter>
             <NavBar/>
@@ -19,6 +19,18 @@ function Spa(){
             </UserContext.Provider>
         </HashRouter>
     );
+    }else{
+    return(
+    <HashRouter>
+        <NavBar/>
+        <UserContext.Provider value={{users:[{name:'beau', email:'beau@gmail.com',password:'secret',balance:100.00}]}}>
+            <Route path="/" exact component={Home} />
+            <Route path="/CreateAccount/" exact component={CreateAccount} />
+        </UserContext.Provider>
+    </HashRouter>
+    );
+    }
+
 }
 
 
