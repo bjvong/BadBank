@@ -4,8 +4,9 @@ function Spa(){
        var res = await fetch(url);
        var data = await res.json();
        console.log(data);
+       console.log('if it works:', data.id, + ' ' + data.email);
     })();
-        console.log('if it works:', data.id, + ' ' + data.email);
+        
     return(
         <HashRouter>
             <NavBar/>
