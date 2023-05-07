@@ -75,7 +75,7 @@ app.get("/auth/logout", (req, res) => {
     req.flash("success", "Successfully logged out");
     req.session.destroy(function () {
     res.clearCookie("connect.sid");
-    res.redirect("/login");
+    res.redirect("/");
     });
   });
 
@@ -102,24 +102,23 @@ app.get("/auth/logout", (req, res) => {
 
 
 
-app.get('/auth/local/signup/:firstName/:lastName/:email/:password', function (req, res) {   
-
-              UserService.addLocalUser({
+app.get('/auth/local/signup/:firstName/:lastName/:email/:password', async function (req, res) {  
+    const hashedPassword = await bcrypt.hash(req.params.password, 10);
+    
+            UserService.addLocalUser({
               id: uuid.v4(),
               email: req.params.email,
               firstName: req.params.firstName,
               lastName: req.params.lastName,
-              password: req.params.password     
-            }).then((user)=>{
-                res.send(user);
-            });          
+              password: hashedPassword     
+            })
 });
 
 
-  app.post("/auth/local/signin",
+app.post("/auth/local/signin",
     passport.authenticate("local", {
       successRedirect: "/",
-      failureRedirect: "/local/signin",
+      failureRedirect: "/Login/",
       failureFlash: true
     })
   );

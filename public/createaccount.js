@@ -31,8 +31,8 @@ function CreateAccount(){
          const url = `/auth/local/signup/${firstName}/${lastName}/${email}/${password}`;
          ( async ()=>{
             var res = await fetch(url);
-            var data = await res.json();
-            console.log(data);
+            var user = await res.json();
+            res.send(user);
 
          })();
          setStatus('Account Created Successfully');
@@ -97,8 +97,7 @@ function CreateAccount(){
             </>
         ):(
             <>
-            <h5>You are logged in.</h5>
-            <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+            <Redirect to ='/Login/'/>
             </>
         )}
         />
