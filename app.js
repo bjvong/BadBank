@@ -11,7 +11,7 @@ const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const UserService = require("./src/user");
 
-// require("./src/config/google");
+require("./src/config/google");
 require("./src/config/local");
 require("./src/config/passport");
 
