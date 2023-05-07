@@ -90,7 +90,7 @@ app.get("/auth/logout", (req, res) => {
 //   });
 
  app.get("/profile", isLoggedIn, (req, res) => {
-     res(req.user);
+     console.log(req.user);
      res.redirect("/");
    });
 
