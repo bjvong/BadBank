@@ -54,12 +54,17 @@ app.get(
       scope: ["profile", "email"],
     })
   );
+
+  app.get("/error", (req,res) => {
+    var thiserror = {error: "screwed up"};
+    res.json(thiserror);
+  });
   
 app.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      failureRedirect: "/",
-      successRedirect: "/profile",
+      failureRedirect: "/error",
+      successRedirect: "/",
       failureFlash: true,
       successFlash: "Successfully logged in!",
     })
@@ -89,9 +94,9 @@ app.get("/auth/logout", (req, res) => {
 //     res.render("local/signin.ejs");
 //   });
 
- app.get("/profile", isLoggedIn, (req, res) => {
+ app.get("/currentUser", isLoggedIn, (req, res) => {
      console.log(req.user);
-     res.redirect("/");
+     res.json(req.user);
    });
 
 
@@ -112,7 +117,7 @@ app.get('/auth/local/signup/:firstName/:lastName/:email/:password', function (re
 
   app.post("/auth/local/signin",
     passport.authenticate("local", {
-      successRedirect: "/profile",
+      successRedirect: "/",
       failureRedirect: "/local/signin",
       failureFlash: true
     })
