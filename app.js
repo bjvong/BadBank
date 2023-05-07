@@ -96,7 +96,7 @@ app.get("/auth/logout", (req, res) => {
 
  app.get("/currentUser", isLoggedIn, (req, res) => {
      console.log(req.user);
-     res.json(req.user);
+     res.send(req.user);
    });
 
 

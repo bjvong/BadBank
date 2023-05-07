@@ -1,4 +1,4 @@
-function CreateAccount({loggedIn, onGoogleLogin}){
+function CreateAccount(){
     const [show, setShow] = React.useState(true);
     const [status, setStatus] = React.useState('');
     const [firstName, setFirstName] = React.useState('');
@@ -6,8 +6,6 @@ function CreateAccount({loggedIn, onGoogleLogin}){
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [buttonMode, setButtonMode] = React.useState(true);
-    // const [loggedIn, setLoggedIn] = React.useState(loggedIn);
-
  
     function validate(field, label){
         if (!field){
@@ -36,18 +34,9 @@ function CreateAccount({loggedIn, onGoogleLogin}){
             var data = await res.json();
             console.log(data);
 
-
          })();
          setStatus('Account Created Successfully');
          setShow(false);
-     }
-
-     function onGoogleLogin(){
-        const url = '/auth/google';
-         ( async (req, res)=>{
-            res.redirect(url);
-            })();
-
      }
     
     function clearForm(){
@@ -85,22 +74,24 @@ function CreateAccount({loggedIn, onGoogleLogin}){
             <>
             {/* <form className="auth-container text-center"action="/auth/local/signup"method="post"> */}
             First Name<br/>
-            <input name="first_name" type="input" aria-label="First name" className="form-control" id="firstName" placeholder="Enter First name" value={firstName} 
-            onChange={(e) => handleChange(e,'firstName')}/><br/>
+            <input name="first_name" type="text" aria-label="First name" className="form-control" id="firstName" placeholder="Enter First name" value={firstName} 
+            onChange={(e) => handleChange(e,'firstName')} required/><br/>
             Last Name<br/>
-            <input name="last_name" type="input" aria-label="Last name" className="form-control" id="lastName" placeholder="Enter Last name" value={lastName} 
-            onChange={(e) => handleChange(e,'lastName')}/><br/>
+            <input name="last_name" type="text" aria-label="Last name" className="form-control" id="lastName" placeholder="Enter Last name" value={lastName} 
+            onChange={(e) => handleChange(e,'lastName')} required/><br/>
             Email Address<br/>
             <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" value={email} 
-            onChange={(e) => handleChange(e,'email')}/><br/>
+            onChange={(e) => handleChange(e,'email')} required/><br/>
             Password<br/>
             <input type="password" className="form-control" id="password" name="password" placeholder="Enter password" value={password} 
-            onChange={(e) => handleChange(e,'password')}/><br/>
+            onChange={(e) => handleChange(e,'password')} required/><br/>
             <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
             {/* </form> */}
-            <button onClick={onGoogleLogin} className="btn btn-primary btn-block my-2" type="submit">
+            <form className="text-center" action="/auth/google" method="get">
+            <button className="btn btn-primary btn-block my-2" type="submit">
             Sign-in with Google
             </button>
+            </form>
 
             </>
         ):(
