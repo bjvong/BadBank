@@ -1,4 +1,4 @@
-function NavBar(loggedIn){
+function NavBar({loggedIn}){
   console.log(loggedIn);
     return (
       loggedIn ? 

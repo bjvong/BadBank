@@ -41,6 +41,16 @@ function CreateAccount({loggedIn, onGoogleLogin}){
          setStatus('Account Created Successfully');
          setShow(false);
      }
+
+     function onGoogleLogin(){
+        const url = '/auth/google';
+         ( async ()=>{
+            var res = await fetch(url);
+            var data = await res.json();
+            console.log(data);
+            })();
+
+     }
     
     function clearForm(){
         setFirstName('');
@@ -90,11 +100,9 @@ function CreateAccount({loggedIn, onGoogleLogin}){
             onChange={(e) => handleChange(e,'password')}/><br/>
             <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
             {/* </form> */}
-            <form className="text-center" action="/auth/google" method="get">
-            <button onClick={() => onGoogleLogin()} className="btn btn-primary btn-block my-2" type="submit">
+            <button onClick={onGoogleLogin} className="btn btn-primary btn-block my-2" type="submit">
             Sign-in with Google
             </button>
-            </form>
 
             </>
         ):(
