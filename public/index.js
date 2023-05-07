@@ -7,8 +7,8 @@ function Spa(){
             <NavBar loggedIn={loggedIn}/>
             <UserContext.Provider value={{users:[{name:'beau', email:'beau@gmail.com',password:'secret',balance:100.00}]}}>
                 <Route path="/" exact component={Home} />
-                <Route path="/Login/" exact component={() => <Login setLoggedIn={setLoggedIn} />} />
-                <Route path="/CreateAccount/" exact component={CreateAccount} />
+                <Route path="/Login/" exact component={() => <Login loggedIn={setLoggedIn} />} />
+                <Route path="/CreateAccount/" exact component= {() => <CreateAccount loggedIn={setLoggedIn} />} />
                 <Route path="/deposit/" exact component={Deposit} />
                 <Route path="/withdraw/" exact component={Withdraw} />
                 <Route path="/alldata/" exact component={AllData} />

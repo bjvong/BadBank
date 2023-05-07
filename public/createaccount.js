@@ -1,4 +1,4 @@
-function CreateAccount(){
+function CreateAccount(loggedIn){
     const [show, setShow] = React.useState(true);
     const [status, setStatus] = React.useState('');
     const [firstName, setFirstName] = React.useState('');
@@ -33,6 +33,7 @@ function CreateAccount(){
             var res = await fetch(url);
             var data = await res.json();
             console.log(data);
+            loggedIn = true;
 
          })();
          setStatus('Account Created Successfully');
