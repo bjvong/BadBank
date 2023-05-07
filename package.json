@@ -4,9 +4,9 @@
   "description": "unsecure banking app",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=5000",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "test": "jest",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "beau",
   "license": "MIT",
@@ -26,6 +26,8 @@
     "mongoose": "^7.1.0",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
     "supertest": "^6.3.3",
     "uuid": "^9.0.0"
   },
