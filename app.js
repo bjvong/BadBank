@@ -90,9 +90,11 @@ app.get("/auth/logout", (req, res) => {
 //   });
 
  app.get("/profile", isLoggedIn, (req, res) => {
-     console.log(req.user);
+     res(req.user);
      res.redirect("/");
    });
+
+
 
 app.get('/auth/local/signup/:firstName/:lastName/:email/:password', function (req, res) {   
 
