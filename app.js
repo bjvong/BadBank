@@ -89,9 +89,9 @@ app.get("/auth/logout", (req, res) => {
 //     res.render("local/signin.ejs");
 //   });
 
-// app.get("/profile", isLoggedIn, (req, res) => {
-//     res.render("profile.ejs", { user: req.user });
-//   });
+ app.get("/profile", isLoggedIn, (req, res) => {
+     res.send.JSONstringify(req.user);
+   });
 
 app.get('/auth/local/signup/:firstName/:lastName/:email/:password', function (req, res) {   
 
