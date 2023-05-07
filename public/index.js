@@ -1,3 +1,7 @@
+if(user){
+console.log("index" + user);
+}else console.log("not logged in on index");
+
 function Spa(){
 
     return(
