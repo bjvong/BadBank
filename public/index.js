@@ -1,9 +1,9 @@
-if(user){
-console.log("index" + user);
-}else console.log("not logged in on index");
-
 function Spa(){
 
+    if(user){
+        console.log("index" + user);
+        }else console.log("not logged in on index");
+        
     return(
         <HashRouter>
             <NavBar/>
