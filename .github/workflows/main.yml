@@ -1,30 +1,20 @@
-name: Upload Website
+name: Deploy
+
 on:
   push:
     branches:
-    - main
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-        mongodb-version: ['5.0']
     steps:
       - uses: actions/checkout@v2
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      # - name: Start MongoDB
-      #   uses: supercharge/mongodb-github-action@1.8.0
-      #   with:
-      #     mongodb-version: ${{ matrix.mongodb-version }}
-      - run: npm install
-      - run: npm run build --if-present
-      # - run: npm test
-        env:
-          CI: true
+      - uses: akhileshns/heroku-deploy@v3.12.13 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: bad-bank-bjvd #Must be unique in Heroku
+          heroku_email: bjvong@gmail.com
   # deploy:
   #   runs-on: ubuntu-latest
   #   steps:
