@@ -1,9 +1,31 @@
 function Withdraw(){
-    const ctx = React.useContext(UserContext);
+    const [username, setUsername] = React.useState('');
+    const [context, setContext] = React.useState(true);
     const [status, setStatus] = React.useState('');
     const [withdrawAmount, setWithdrawAmount] = React.useState('');
-    const [balance, setBalance] = React.useState(Number(ctx.users[ctx.users.length - 1].balance));
+    const [balance, setBalance] = React.useState('');
     const [buttonMode, setButtonMode] = React.useState(true);
+    
+    ( async ()=>{
+        await fetch('/currentUser').
+        then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            throw new Error('We are not logged in');
+        })
+        .then((resJson) =>{
+            setUsername(resJson.email);
+            setBalance(resJson.balance);
+            //console.log(loggedIn);
+            //console.log(resJson);
+        })
+        .catch((error) => {
+            setContext(false);
+            //console.log(loggedIn);
+            //console.log(error)
+        });
+     })();
 
 function validate(field){
         if (!field){
@@ -27,8 +49,14 @@ function validate(field){
 function makeWithdraw (){
     if (!validate(withdrawAmount)) return;
     let newBalance = balance - Number(withdrawAmount);
-    ctx.users[ctx.users.length - 1].balance = newBalance;
-    setBalance(newBalance);
+
+    const url = `/updateBalance/${newBalance}`;
+         ( async ()=>{
+            var res = await fetch(url);
+            var check = await res.json();
+
+         })();
+
     setStatus('Withdraw Successful');
     setWithdrawAmount('');
     setButtonMode(true);
@@ -49,17 +77,16 @@ function handleChange(e){
         header="Withdraw"
         status={status}
 
-        body={!ctx.users[0]  ? (
-            <>
-            <h5>Create Account to Make a Withdraw</h5>
-            </>
-        ):(
+        body={context ? (
             <>
             <h5>Current Balance: ${balance}</h5><br/>
             <input type="text" className="form-control" id="withdraw" placeholder="Enter Withdraw Amount" value={withdrawAmount} 
             onChange={(e) => handleChange(e)}/><br/>
             <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={makeWithdraw}>Withdraw</button>
-            
+            </>
+        ):(
+            <>
+            <Redirect to ='/'/>
             </>
         )}
         />

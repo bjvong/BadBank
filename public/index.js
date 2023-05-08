@@ -1,6 +1,6 @@
 function Spa(){
     const [loggedIn, setLoggedIn] = React.useState('');
-    const ctx = React.useContext(UserContext);
+    const [nameDisplay, setNameDisplay] = React.useState('');
     const url = '/currentUser';
          ( async ()=>{
             await fetch(url).
@@ -12,6 +12,8 @@ function Spa(){
             })
             .then((resJson) =>{
                 setLoggedIn(true);
+                const combineName = resJson.firstName + ' ' + resJson.lastName;
+                setNameDisplay(combineName);
                 //console.log(loggedIn);
                 //console.log(resJson);
             })
@@ -42,10 +44,10 @@ function Spa(){
             href = "#/Withdraw/"
             title = "Withdraw from your Bad Bank Account"
             />
-            <NavLink 
-            name = "All Data"
-            href = "#/Alldata/"
-            title = "View all data"
+            <UsernameDisplay
+            name = {nameDisplay}
+            href = "/auth/logout"
+            title = "Log out of Bad Bank"
             />
             </>):(<>
                 <NavLink 
@@ -63,10 +65,10 @@ function Spa(){
             <UserContext.Provider value={{users:[{name:'beau', email:'beau@gmail.com',password:'secret',balance:100.00}]}}>
                 <Route path="/" exact component={Home} />
                 <Route path="/login/" exact component={Login} />
+                <Route path="/loginfail" exact component={Login} />
                 <Route path="/CreateAccount/" exact component={CreateAccount} />
                 <Route path="/deposit/" exact component={Deposit} />
                 <Route path="/withdraw/" exact component={Withdraw} />
-                <Route path="/alldata/" exact component={AllData} />
             </UserContext.Provider>
         </HashRouter>
     );

@@ -97,7 +97,7 @@ function CreateAccount(){
             </>
         ):(
             <>
-            <Redirect to ='/Login/'/>
+            <Redirect to ='/'/>
             </>
         )}
         />

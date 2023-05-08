@@ -10,6 +10,7 @@ const flash = require("express-flash");
 const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const UserService = require("./src/user");
+const Modeluser = require("./src/user/user.model");
 
 require("./src/config/google");
 require("./src/config/local");
@@ -79,26 +80,25 @@ app.get("/auth/logout", (req, res) => {
     });
   });
 
-//   app.get("/g", (req, res) => {
-//     res.render("google.ejs");
-//   });
-  
-//   app.get("/", (req, res) => {
-//     res.render("index.ejs");
-//   });
-  
-//   app.get("/local/signup", (req, res) => {
-//     res.render("local/signup.ejs");
-//   });
-  
-//   app.get("/local/signin", (req, res) => {
-//     res.render("local/signin.ejs");
-//   });
 
  app.get("/currentUser", isLoggedIn, (req, res) => {
      console.log(req.user);
      res.send(req.user);
    });
+  
+   app.get("/updateBalance/:newBalance", isLoggedIn, async (req, res) => {
+    const filter = { email: req.user.email };
+    const update = { balance: req.params.newBalance };
+
+    let doc = await Modeluser.findOneAndUpdate(filter, update);
+    doc.balance = update.balance;
+    await doc.save().then((doc) =>{
+      res.send(doc);
+    }).catch((error) => {
+      console.log(error);
+      });
+    
+  });
 
 
 
@@ -118,7 +118,7 @@ app.get('/auth/local/signup/:firstName/:lastName/:email/:password', async functi
 app.post("/auth/local/signin",
     passport.authenticate("local", {
       successRedirect: "/",
-      failureRedirect: "/Login/",
+      failureRedirect: "/loginfail",
       failureFlash: true
     })
   );

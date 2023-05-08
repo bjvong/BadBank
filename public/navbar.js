@@ -26,3 +26,11 @@ return(
   </>
 )
 }
+
+function UsernameDisplay(props){
+  return(
+    <>
+    {props.name && props.title && props.href &&(<div className="nav-link" data-toggle="tooltip" title={props.title} href={props.href}>Welcome, {props.name}</div>)}
+    </>
+  )
+  }
