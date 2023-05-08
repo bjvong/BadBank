@@ -14,13 +14,10 @@ function Spa(){
                 setLoggedIn(true);
                 const combineName = resJson.firstName + ' ' + resJson.lastName;
                 setNameDisplay(combineName);
-                //console.log(loggedIn);
-                //console.log(resJson);
             })
             .catch((error) => {
                 setLoggedIn(false);
-                //console.log(loggedIn);
-                //console.log(error)
+
             });
 
          })();
