@@ -47,7 +47,7 @@ function Spa(){
             title = "Log out of Bad Bank"
             />
             </>):(<>
-                <NavLink 
+            <NavLink 
             name = "Create Account"
             href = "#/CreateAccount/"
             title = "Create a new Bad Bank Account!"
@@ -59,14 +59,14 @@ function Spa(){
             />
             </>)}
             />
-            <UserContext.Provider value={{users:[{name:'beau', email:'beau@gmail.com',password:'secret',balance:100.00}]}}>
+            
                 <Route path="/" exact component={Home} />
                 <Route path="/login/" exact component={Login} />
                 <Route path="/loginfail" exact component={Login} />
                 <Route path="/CreateAccount/" exact component={CreateAccount} />
                 <Route path="/deposit/" exact component={Deposit} />
                 <Route path="/withdraw/" exact component={Withdraw} />
-            </UserContext.Provider>
+
         </HashRouter>
     );
 }
