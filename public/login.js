@@ -1,9 +1,11 @@
-function Login(){
+function Login(props){
     const [show, setShow] = React.useState(true);
     const [status, setStatus] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [buttonMode, setButtonMode] = React.useState(true);
+
+    const message = props.message ? props.message : "Welcome Back!";
  
     function validate(field, label){
         if (!field){
@@ -39,8 +41,9 @@ function Login(){
 
     return (
         <Card
-        bgcolor="primary"
-        header="Welcome Back!"
+        bgcolor="light"
+        txtcolor="black"
+        header={message}
         status={status}
         body={show ? (
             <>
@@ -50,13 +53,15 @@ function Login(){
             onChange={(e) => handleChange(e,'email')} required/><br/>
             Password<br/>
             <input type="password" className="form-control" id="password" name="password" placeholder="Enter password" value={password} 
-            onChange={(e) => handleChange(e,'password')} required/><br/>
-            <button disabled={buttonMode} className="btn btn-primary btn-block my-2" type="submit">
-            Sign In
+            onChange={(e) => handleChange(e,'password')} required/><br/><br/>
+            <div className="text-center">
+            <button type="submit" style={{width:"165px"}} className="btn btn-primary btn-block" disabled={buttonMode}>
+            Sign in
             </button>
+            </div>
             </form>
             <form className="text-center" action="/auth/google" method="get">
-            <button className="btn btn-primary btn-block my-2" type="submit">
+            <button className="btn btn-success btn-block my-2" type="submit">
             Sign-in with Google
             </button>
             </form>

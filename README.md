@@ -7,7 +7,8 @@ I built it to further apply this knowledge as it is not an actual banking applic
 
 HOW TO RUN:
 After downloading the directory to your machine, npm install for all dependencies.
-Run a local Docker container for mongodb database server on port 27017.
+Add .env file with following variables:
+
 run node index.js and navigate to http://localhost:3000/
 
 Screenshot:
@@ -16,17 +17,21 @@ https://imgur.com/a/0hThwE0
 Tech used:
 React.js
 Node.js
-MongoDB
-Docker
+MongoDB/Mongoose
 Express
-Cors
+Passport Auth
+Bcrypt
+CORS
+Heroku
+
 
 Features:
+Google Oauth sign in.
 Create accounts and login using database.
 Make Deposits and Withdrawals from balance of logged in account.
 
 Future Features:
-Authentication of routes to improve functionality of the app per logged in and logged out users.
+
 
 MIT License
 

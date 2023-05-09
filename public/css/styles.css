@@ -1,0 +1,32 @@
+html,
+body {
+  height: 100%;
+}
+div.mainDiv {
+  height: 100%;
+  align-items: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top:5px;
+}
+
+.userDisplay, .userDisplay:hover, .userDisplay:focus{
+text-decoration: none;
+color:#f5f5f5;
+user-select: none;
+font-size:100%;
+}
+
+div.userDisplay{
+height:100%;
+padding-top:7.5px;
+}
+
+#createStatus{
+  text-align: center;
+}
+
+
+

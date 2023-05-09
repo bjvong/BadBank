@@ -18,13 +18,10 @@ function Deposit(){
        .then((resJson) =>{
            setUsername(resJson.email);
            setBalance(resJson.balance);
-           //console.log(loggedIn);
-           //console.log(resJson);
        })
        .catch((error) => {
            setContext(false);
-           //console.log(loggedIn);
-           //console.log(error)
+           console.log(error);
        });
     })();
 
@@ -49,7 +46,8 @@ function validate(field){
 
 function makeDesposit (){
     if (!validate(depositAmount)) return;
-    let newBalance = balance + Number(depositAmount);
+    let preFormat = balance + Number(depositAmount);
+    let newBalance = Math.floor(preFormat*100)/100;
 
     const url = `/updateBalance/${newBalance}`;
          ( async ()=>{
@@ -82,8 +80,11 @@ setDepositAmount(e.currentTarget.value);
             <>
             <h5>Current Balance: ${balance}</h5><br/>
             <input type="text" className="form-control" id="desposit" placeholder="Enter Deposit Amount" value={depositAmount} 
-            onChange={(e) => handleChange(e)}/><br/>
-            <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={makeDesposit}>Deposit</button>
+            onChange={(e) => handleChange(e)}/><br/><br/>
+            <div className="text-center">
+            <button type="submit" style={{width:"165px"}} className="btn btn-light btn-block" disabled={buttonMode} onClick={makeDesposit}>Deposit</button>
+            </div>
+            <br/>
             </>
         ):(
             <>

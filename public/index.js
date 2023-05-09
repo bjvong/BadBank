@@ -17,47 +17,49 @@ function Spa(){
             })
             .catch((error) => {
                 setLoggedIn(false);
+                console.log(error);
 
             });
 
          })();
         
     return(
+        
         <HashRouter>
             <NavBar 
-            body={loggedIn ? (<>
-            <NavLink 
-            name = "Log out"
-            href = "/auth/logout"
-            title = "Log out of your Bad Bank Account"
-            />
-            <NavLink 
-            name = "Deposit"
-            href = "#/Deposit/"
-            title = "Deposit to your Bad Bank Account"
-            />
-            <NavLink 
-            name = "Withdraw"
-            href = "#/Withdraw/"
-            title = "Withdraw from your Bad Bank Account"
-            />
-            <UsernameDisplay
-            name = {nameDisplay}
-            href = "/auth/logout"
-            title = "Log out of Bad Bank"
-            />
-            </>):(<>
-            <NavLink 
-            name = "Create Account"
-            href = "#/CreateAccount/"
-            title = "Create a new Bad Bank Account!"
-            />
-            <NavLink 
-            name = "Log in"
-            href = "#/Login/"
-            title = "Log into your Bad Bank Account"
-            />
-            </>)}
+                left={(
+                <>
+                  <NavBarLeft
+                    body={loggedIn ? (
+                      <>
+                        <NavLink name="Deposit" href ="#/Deposit/" title ="Deposit to your Bad Bank Account"/>
+                        <NavLink name="Withdraw" href ="#/Withdraw/" title ="Withdraw from your Bad Bank Account"/>
+                      </>
+                    ):(
+                      <>
+                        <NavLink name="Create Account" href="#/CreateAccount/" title="Create a new Bad Bank Account!"/>
+                      </>  
+                    )}
+                  />
+                </>
+                )}
+            
+            right={(
+                <>
+                  <NavBarRight
+                    body={loggedIn ? (
+                      <>
+                        <UsernameDisplay name= {nameDisplay} title= "Username"/>
+                        <NavLink name="Log out?" href="/auth/logout" title="Log out of your Bad Bank Account"/>
+                      </>
+                    ):(
+                      <>
+                        <NavLink name="Log in" href="#/Login/" title="Log into your Bad Bank Account"/>
+                      </>
+                    )}
+                  />
+                </>
+                )}
             />
             
                 <Route path="/" exact component={Home} />

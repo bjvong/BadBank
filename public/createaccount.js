@@ -66,14 +66,15 @@ function CreateAccount(){
         }
 
     return (
-
+        <Dynamic
+        body={show ? (
+        <>
         <Card
-        bgcolor="primary"
+        bgcolor="light"
+        txtcolor="black"
         header="Create Account"
         status={status}
-        body={show ? (
-            <>
-            {/* <form className="auth-container text-center"action="/auth/local/signup"method="post"> */}
+        body={(<>
             First Name<br/>
             <input name="first_name" type="text" aria-label="First name" className="form-control" id="firstName" placeholder="Enter First name" value={firstName} 
             onChange={(e) => handleChange(e,'firstName')} required/><br/>
@@ -86,20 +87,25 @@ function CreateAccount(){
             Password<br/>
             <input type="password" className="form-control" id="password" name="password" placeholder="Enter password" value={password} 
             onChange={(e) => handleChange(e,'password')} required/><br/>
-            <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
-            {/* </form> */}
+            <div className="text-center">
+            <button type="submit" className="btn btn-primary btn-lg btn-block" disabled={buttonMode} onClick={handleCreate}>Create Account</button>
+            </div>
             <form className="text-center" action="/auth/google" method="get">
-            <button className="btn btn-primary btn-block my-2" type="submit">
+            <button className="btn btn-success btn-block my-2" type="submit">
             Sign-in with Google
             </button>
             </form>
-
             </>
+            )} 
+            /></>
+            
         ):(
             <>
-            <Redirect to ='/'/>
+            {/* <Redirect to = {{ pathname: "/Login/", state: {titleMsg: "false", check: "Account Created Successfully", userEmail: email } }} /> */}
+            <Login message ="Account Registered Successfully! Please Log in." email={email}/>
             </>
         )}
+        
         />
-    );
+        );
 }

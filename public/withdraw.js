@@ -17,13 +17,10 @@ function Withdraw(){
         .then((resJson) =>{
             setUsername(resJson.email);
             setBalance(resJson.balance);
-            //console.log(loggedIn);
-            //console.log(resJson);
         })
         .catch((error) => {
             setContext(false);
-            //console.log(loggedIn);
-            //console.log(error)
+            console.log(error);
         });
      })();
 
@@ -48,7 +45,8 @@ function validate(field){
 
 function makeWithdraw (){
     if (!validate(withdrawAmount)) return;
-    let newBalance = balance - Number(withdrawAmount);
+    let preFormat = balance + Number(withdrawAmount);
+    let newBalance = Math.floor(preFormat*100)/100;
 
     const url = `/updateBalance/${newBalance}`;
          ( async ()=>{
@@ -81,8 +79,11 @@ function handleChange(e){
             <>
             <h5>Current Balance: ${balance}</h5><br/>
             <input type="text" className="form-control" id="withdraw" placeholder="Enter Withdraw Amount" value={withdrawAmount} 
-            onChange={(e) => handleChange(e)}/><br/>
-            <button type="submit" className="btn btn-light" disabled={buttonMode} onClick={makeWithdraw}>Withdraw</button>
+            onChange={(e) => handleChange(e)}/><br/><br/>
+            <div className="text-center">
+            <button type="submit" style={{width:"165px"}} className="btn btn-light btn-block" disabled={buttonMode} onClick={makeWithdraw}>Withdraw</button>
+            </div>
+            <br/>
             </>
         ):(
             <>
