@@ -1,7 +1,7 @@
 function Login(props){
     const [show, setShow] = React.useState(true);
     const [status, setStatus] = React.useState('');
-    const [email, setEmail] = React.useState('');
+    const [email, setEmail] = React.useState(props.email ? props.email : '');
     const [password, setPassword] = React.useState('');
     const [buttonMode, setButtonMode] = React.useState(true);
 
