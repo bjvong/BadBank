@@ -44,6 +44,8 @@ app.use(
 
 app.use(flash());
 
+// Routes for communication and functionality //
+
 app.use(passport.initialize());
 app.use(passport.session());
   
@@ -58,11 +60,6 @@ app.get(
       scope: ["profile", "email"],
     })
   );
-
-  app.get("/error", (req,res) => {
-    var thiserror = {error: "screwed up"};
-    res.json(thiserror);
-  });
   
 app.get(
     "/auth/google/callback",
@@ -82,7 +79,7 @@ app.get("/auth/logout", (req, res) => {
     });
   });
 
-
+// Routes for communication and functionality //
  app.get("/currentUser", isLoggedIn, (req, res) => {
      console.log(req.user);
      res.send(req.user);
