@@ -11,6 +11,8 @@ const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const UserService = require("./src/user");
 const Modeluser = require("./src/user/user.model");
+const userService = require('./src/user/user.service');
+const user = require('./src/user');
 
 require("./src/config/google");
 require("./src/config/local");
@@ -85,6 +87,11 @@ app.get("/auth/logout", (req, res) => {
      console.log(req.user);
      res.send(req.user);
    });
+
+   app.get("/api/allUsers", async (req, res) => {
+      let doc = await Modeluser.find({}, 'firstName balance');
+      res.send(doc);
+   })
   
    app.get("/updateBalance/:newBalance", isLoggedIn, async (req, res) => {
     const filter = { email: req.user.email };

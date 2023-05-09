@@ -45,7 +45,7 @@ function validate(field){
 
 function makeWithdraw (){
     if (!validate(withdrawAmount)) return;
-    let preFormat = balance + Number(withdrawAmount);
+    let preFormat = balance - Number(withdrawAmount);
     let newBalance = Math.floor(preFormat*100)/100;
 
     const url = `/updateBalance/${newBalance}`;

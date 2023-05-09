@@ -2,17 +2,28 @@
 
 Welcome to the Bad Bank!
 
-This project is a representation of a full stack application using what I've learned through the MIT xPro course.
-I built it to further apply this knowledge as it is not an actual banking application for use with real money.
+A React Express MongoDB Node SPA banking application. Users can create an account locally or authenticate using google to deposit or withdraw money with a balance stored in a database.
 
-HOW TO RUN:
-After downloading the directory to your machine, npm install for all dependencies.
-Add .env file with following variables:
+HOW TO RUN (USER):
+https://bad-bank-bjvd.herokuapp.com
 
-run node index.js and navigate to http://localhost:3000/
+HOW TO RUN (DEV):
+npm Install dependencies.
+add .env variables:
+    GOOGLE_OAUTH_CALLBACK_URL="YOURCALLBACKURL"
+    GOOGLE_OAUTH_TEST_APP_CLIENT_ID="YOURGOOGLEAUTHCLIENTID"
+    GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET="YOURGOOGLEAUTHCLIENTSECRET"
+    MONGO_URI="YOURMONGODBCONNECTIONURI"
+    PORT=PORTFORLOCALDEV
+npm start
+
+API DOCUMENTATION:
+/api/allUsers
+will show all users just by first name and their current balance.
+
 
 Screenshot:
-https://imgur.com/a/0hThwE0
+https://imgur.com/a/BFAAz04
 
 Tech used:
 React.js
@@ -31,6 +42,9 @@ Create accounts and login using database.
 Make Deposits and Withdrawals from balance of logged in account.
 
 Future Features:
+Conversion from SPA to full React app.
+Improvement to user login and registraion validation and the responses to it.
+Transaction 
 
 
 MIT License
