@@ -4,6 +4,8 @@ const Link = ReactRouterDOM.Link;
 const HashRouter = ReactRouterDOM.HashRouter;
 const BrowserRouter = ReactRouterDOM.BrowserRouter;
 const UserContext = React.createContext(null);
+const history = ReactRouterDOM.useHistory;
+
 
 
 

@@ -78,6 +78,10 @@ app.get("/auth/logout", (req, res) => {
     res.redirect("/");
     });
   });
+  app.get("/loggedIn", (req, res) => {
+    console.log(req.user);
+    res.send(user);
+  });
 
 // Routes for communication and functionality //
  app.get("/currentUser", isLoggedIn, (req, res) => {
@@ -122,11 +126,26 @@ app.get('/auth/local/signup/:firstName/:lastName/:email/:password', async functi
 app.post("/auth/local/signin",
     passport.authenticate("local", {
       successRedirect: "/",
-      failureRedirect: "/loginfail",
+      failureRedirect: "/?v=failed",
       failureFlash: true
     })
   );
   
+// app.post("/auth/local/signin", (req, res, next) => {
+//      passport.authenticate("local", (err, user, info) => {
+//           if (err) {
+//       return res.status(500).send();
+//           }
+//     if (!user && info) {
+//       return res.status(422).send(info);
+//     } else{
+//       res.status(200).send(user);
+//     } 
+//      })(req, res, next);
+//     });
+
+
+
 
 const server = app.listen(port, function() {
     console.log('Server is listening on port ' + port);

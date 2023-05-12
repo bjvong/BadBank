@@ -21,10 +21,8 @@ API DOCUMENTATION:
 /api/allUsers
 will show all users just by first name and their current balance.
 
-
 Screenshot:
 https://imgur.com/a/BFAAz04
-
 Tech used:
 React.js
 Node.js
